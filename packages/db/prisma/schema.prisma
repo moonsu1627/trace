@@ -1,0 +1,272 @@
+// Trace — Developer Signal Engine
+// schema is intentionally CRM-free: no Contact, Deal, Stage, Pipeline.
+// Model language: Person · Identity · Event · Signal · Interest · Theme · Integration · Organization.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- Tenancy ----------
+
+model Workspace {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  members      WorkspaceMember[]
+  people       Person[]
+  identities   Identity[]
+  events       Event[]
+  signals      Signal[]
+  themes       Theme[]
+  interests    Interest[]
+  integrations Integration[]
+  organizations Organization[]
+  waitlistEntries WaitlistEntry[]
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String?
+  githubLogin String?  @unique
+  avatarUrl   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  memberships WorkspaceMember[]
+}
+
+model WorkspaceMember {
+  id          String   @id @default(cuid())
+  workspaceId String
+  userId      String
+  role        WorkspaceRole @default(owner)
+  createdAt   DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, userId])
+}
+
+enum WorkspaceRole {
+  owner
+  member
+}
+
+// ---------- People & Identity ----------
+
+model Person {
+  id            String   @id @default(cuid())
+  workspaceId   String
+  primaryHandle String
+  displayName   String?
+  avatarUrl     String?
+  bio           String?
+  location      String?
+  company       String?
+  websiteUrl    String?
+  firstSeenAt   DateTime
+  lastSeenAt    DateTime
+  score         Int      @default(0)
+  organizationId String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  workspace    Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  identities   Identity[]
+  events       Event[]
+  signals      Signal[]
+  interests    Interest[]
+
+  @@unique([workspaceId, primaryHandle])
+  @@index([workspaceId, lastSeenAt])
+  @@index([workspaceId, score])
+}
+
+model Identity {
+  id          String   @id @default(cuid())
+  workspaceId String
+  personId    String
+  source      SourceKey
+  externalId  String
+  handle      String
+  url         String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  person    Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, source, externalId])
+  @@index([personId])
+}
+
+enum SourceKey {
+  github
+  linear
+  discord
+  x
+  docs
+  waitlist
+  support
+}
+
+// ---------- Activity ----------
+
+model Event {
+  id            String   @id @default(cuid())
+  workspaceId   String
+  personId      String
+  source        SourceKey
+  key           String
+  externalId    String
+  occurredAt    DateTime
+  payload       Json
+  weight        Int      @default(1)
+  createdAt     DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  person    Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, source, externalId])
+  @@index([workspaceId, occurredAt])
+  @@index([personId, occurredAt])
+}
+
+// ---------- Signals (rule-based MVP) ----------
+
+model Signal {
+  id           String   @id @default(cuid())
+  workspaceId  String
+  personId     String
+  key          SignalKey
+  status       SignalStatus @default(active)
+  reason       String
+  evidence     Json
+  firstFiredAt DateTime
+  lastFiredAt  DateTime
+  resolvedAt   DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  person    Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, personId, key])
+  @@index([workspaceId, status, lastFiredAt])
+}
+
+enum SignalKey {
+  high_intent
+  power_user
+  feature_advocate
+}
+
+enum SignalStatus {
+  active
+  muted
+  resolved
+}
+
+// ---------- Themes & Interests ----------
+
+model Theme {
+  id          String   @id @default(cuid())
+  workspaceId String
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace Workspace  @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  interests Interest[]
+
+  @@unique([workspaceId, name])
+}
+
+model Interest {
+  id          String   @id @default(cuid())
+  workspaceId String
+  personId    String
+  themeId     String?
+  label       String
+  weight      Int      @default(1)
+  createdAt   DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  person    Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
+  theme     Theme?    @relation(fields: [themeId], references: [id], onDelete: SetNull)
+
+  @@index([personId])
+  @@index([themeId])
+}
+
+// ---------- Organizations (V1.5+) ----------
+
+model Organization {
+  id          String   @id @default(cuid())
+  workspaceId String
+  name        String
+  domain      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  people    Person[]
+
+  @@unique([workspaceId, name])
+}
+
+// ---------- Integration credentials ----------
+
+model Integration {
+  id            String   @id @default(cuid())
+  workspaceId   String
+  source        SourceKey
+  status        IntegrationStatus @default(connected)
+  accountLabel  String
+  encryptedToken String
+  scopes        String[]
+  metadata      Json?
+  installedAt   DateTime @default(now())
+  lastSyncedAt  DateTime?
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, source, accountLabel])
+}
+
+enum IntegrationStatus {
+  connected
+  reauth_required
+  disconnected
+}
+
+// ---------- Waitlist (pre-launch) ----------
+
+model WaitlistEntry {
+  id          String   @id @default(cuid())
+  workspaceId String?
+  email       String
+  githubLogin String?
+  source      String?
+  note        String?
+  referrer    String?
+  ipHash      String?
+  createdAt   DateTime @default(now())
+
+  workspace Workspace? @relation(fields: [workspaceId], references: [id], onDelete: SetNull)
+
+  @@unique([email])
+  @@index([createdAt])
+}

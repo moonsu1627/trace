@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile=false && pnpm --filter @trace/db build && pnpm --filter @trace/web build",
+  "installCommand": "echo \"skipping default install — handled in buildCommand for monorepo\"",
+  "outputDirectory": ".next",
+  "framework": "nextjs"
+}
