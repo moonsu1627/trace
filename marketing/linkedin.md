@@ -53,7 +53,7 @@ Pre-launch, waitlist-only. First 100 builders get the founding plan.
 
 ## First comment (drop link here)
 
-🔗 trace.dev
+🔗 trace-web-srye.vercel.app
 
 GitHub: github.com/moonsu1627/trace
 

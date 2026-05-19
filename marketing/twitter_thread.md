@@ -72,7 +72,7 @@
 >
 > First 100 builders get the founding plan.
 >
-> 👉 https://trace.dev   ← replace with live URL
+> 👉 https://trace-web-srye.vercel.app
 >
 > RTs appreciated. Replies even more.
 

@@ -4,7 +4,7 @@
 > Cross-post: Hashnode, Medium, personal blog if any
 > Cover image: TODO — landing page screenshot
 > Tags: 4 max — `webdev`, `nextjs`, `prisma`, `buildinpublic`
-> Canonical URL: trace.dev/blog/launch (when blog ships) or dev.to as primary
+> Canonical URL: trace-web-srye.vercel.app/blog/launch (when blog ships) or dev.to as primary
 
 ---
 
@@ -132,7 +132,7 @@ Half of building this product turned out to be building the right operating subs
 
 If you've ever opened seven tabs trying to figure out who in your audience is actually paying attention — drop a comment or hit the waitlist. The MVP scope is intentionally narrow and I want the first 20 signups to tell me which of the three baseline signals is wrong before I wire real ingestion.
 
-👉 https://trace.dev   ← waitlist
+👉 https://trace-web-srye.vercel.app   ← waitlist
 
 🐙 https://github.com/moonsu1627/trace   ← code
 

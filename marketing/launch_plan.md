@@ -8,11 +8,12 @@
 ## Pre-flight (15 min)
 
 ```
-□ landing URL 살아있나? http://localhost:3001 또는 Vercel prod URL
-□ waitlist 폼 한 번 더 제출해서 새 row 정상 적재 확인 (Neon dashboard → Tables → WaitlistEntry)
-□ GitHub repo 만들고 push 완료 (코다리가 사장님 자는 동안 처리)
-□ 도메인 결정 — trace.dev 못 사면 trace-app.vercel.app 그대로 가도 OK. 마케팅 자산 안의 "trace.dev" 일괄 치환.
+✓ landing URL 살아있나? → https://trace-web-srye.vercel.app (검증 완료, GET 200 + POST /api/waitlist {"ok":true})
+✓ waitlist 폼 row 적재 확인 — Neon에 production signup 들어감
+✓ GitHub repo public push — github.com/moonsu1627/trace (commit 186a5ab)
+✓ 도메인 — trace 변형 13개 다 등록. vercel.app 그대로 발사. 발사 후 PMF 신호 보고 .dev squatter 협상 또는 새 이름 검토.
 □ landing OG 이미지 1개 — 없으면 발사 후 추가, blocker 아님
+□ X·dev.to·HN·Reddit·LinkedIn·Bluesky·PH 계정 로그인 상태 확인
 ```
 
 ---

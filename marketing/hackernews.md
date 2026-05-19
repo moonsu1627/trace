@@ -2,7 +2,7 @@
 
 > Account: 사장님 HN account (없으면 만들어야 함)
 > Time: post 06:00–08:00 PT weekday. Avoid weekends/Mondays.
-> URL: trace.dev (or live URL)
+> URL: trace-web-srye.vercel.app
 > Title rule: starts with "Show HN: ", under 80 chars, no clickbait.
 
 ---
@@ -58,7 +58,7 @@ What's not built yet (will lie about nothing):
 
 Why I'm posting here pre-launch: I want feedback on the data model and the three baseline signals before I wire real ingestion. If you've ever stared at GitHub Insights and thought "I know who matters in here but I can't name them" — what would you want the daily top-5 to surface? Open to being wrong about the signals.
 
-Waitlist: https://trace.dev (or live URL)
+Waitlist: https://trace-web-srye.vercel.app
 
 Repo: https://github.com/moonsu1627/trace
 
