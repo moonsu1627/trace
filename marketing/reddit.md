@@ -46,7 +46,7 @@ Honest about the parts I'm not sure of:
 
 I'm soloing this. If anyone has ever had the "I know someone in my audience cares but I can't name them" feeling, would love to compare notes.
 
-Repo (public soon): github.com/moonsu1627/trace
+Repo: github.com/moonsu1627/trace
 Waitlist: trace.dev
 
 ---
@@ -82,7 +82,7 @@ Stack: Next.js 16 + Prisma + Neon Postgres + pnpm workspace + Turborepo. Vercel 
 If you've killed and rebuilt your own thing recently, I'd love to hear the inflection point. Specific question I'm sitting with: how do you avoid falling in love with v2 the way you fell in love with v1?
 
 Waitlist: trace.dev
-Repo: github.com/moonsu1627/trace (public soon)
+Repo: github.com/moonsu1627/trace
 
 ---
 
@@ -99,7 +99,7 @@ For devtool founders who keep seven tabs open trying to figure out who in their 
 
 Pre-launch, waitlist-only. Real GitHub adapter is week 1 of MVP — current loop runs on mock data to validate the architecture.
 
-Stack TypeScript-strict end-to-end (Next.js 16, Prisma, Neon, pnpm/Turbo). Repo public soon.
+Stack TypeScript-strict end-to-end (Next.js 16, Prisma, Neon, pnpm/Turbo). Repo open.
 
 Waitlist: trace.dev
 

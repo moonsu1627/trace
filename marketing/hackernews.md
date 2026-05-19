@@ -60,7 +60,7 @@ Why I'm posting here pre-launch: I want feedback on the data model and the three
 
 Waitlist: https://trace.dev (or live URL)
 
-Repo: https://github.com/moonsu1627/trace (will be public after gh login)
+Repo: https://github.com/moonsu1627/trace
 
 Happy to answer anything. The harder the question the better.
 

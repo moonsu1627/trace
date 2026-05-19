@@ -55,7 +55,7 @@ Pre-launch, waitlist-only. First 100 builders get the founding plan.
 
 🔗 trace.dev
 
-GitHub: github.com/moonsu1627/trace (public soon)
+GitHub: github.com/moonsu1627/trace
 
 If you've ever stared at GitHub Insights, your waitlist CSV, and your Stripe customer list in three different tabs trying to figure out who matters today — let me know. Looking for the first 20 signups to tell me which of the three baseline signals is wrong.
 

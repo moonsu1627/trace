@@ -134,7 +134,7 @@ If you've ever opened seven tabs trying to figure out who in your audience is ac
 
 👉 https://trace.dev   ← waitlist
 
-🐙 https://github.com/moonsu1627/trace   ← code (public soon)
+🐙 https://github.com/moonsu1627/trace   ← code
 
 ---
 
