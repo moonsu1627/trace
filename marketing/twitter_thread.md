@@ -62,7 +62,7 @@
 
 > Next.js 16 · Prisma · Postgres on Neon · pnpm workspace · Turborepo
 >
-> 12 tables, 4 enums, score-driven autonomous loop, persona narration layer.
+> 12 models, 5 enums, score-driven autonomous loop with budget rules.
 >
 > Pre-launch. MVP scope is 4–6 weeks. I'm soloing it.
 

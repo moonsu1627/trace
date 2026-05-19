@@ -30,7 +30,7 @@ Three baseline signals every cycle:
 ## Post 4
 Every morning Trace shows 5 people. Not five hundred. Read fewer, deeper.
 
-Stack: Next.js 16, Prisma, Neon, pnpm/Turbo. TypeScript strict. No Python in v1. Repo soon.
+Stack: Next.js 16, Prisma, Neon, pnpm/Turbo. TypeScript strict. No Python in v1. Repo open.
 
 Real GitHub ingestion is week 1 of MVP. Mock data until then.
 

@@ -83,7 +83,7 @@ The hardest part of this rewrite was discipline around language. The old codebas
 
 So Trace's schema bans those words. Models are `Person`, `Identity`, `Event`, `Signal`, `Interest`, `Theme`, `Organization`, `Integration`. The waitlist is a `WaitlistEntry`, not a `Lead`.
 
-If you're building a B2D product, I'd suggest doing the same exercise: write your forbidden-words list before you write the schema. The model bends to the vocabulary, and the vocabulary bends the product. (My full list is in the [decisions log](./decisions.md).)
+If you're building a B2D product, I'd suggest doing the same exercise: write your forbidden-words list before you write the schema. The model bends to the vocabulary, and the vocabulary bends the product.
 
 ### The autonomous loop (the part I almost ruined)
 
@@ -104,9 +104,9 @@ observe → analyze → generate experiment → execute lightweight → measure 
 ```
 
 - It never reads its own previous decisions as input.
-- It pulls metrics from external sources (`github.stars`, `waitlist.signups_24h`, `stripe.mrr` — all stubbed v1, real adapters week 1).
+- Its source layer is structured around external metrics (`github.stars`, `waitlist.signups_24h`, `stripe.mrr` — all stubbed v1, real adapters week 1).
 - Every experiment must specify a metric to measure and a window to measure it in.
-- Decisions without an associated score get garbage-collected.
+- Decisions without an associated score will be garbage-collected (Memory Gate — in flight, design locked).
 - Budget rules block: more than 3 proposals per day, pricing changes without metric evidence, duplicate topics in the last 5 proposals.
 
 Half of building this product turned out to be building the right operating substrate for one developer — not the product itself. The substrate is open-source-able later. For now it's just `src/core/{types,reality,scores,budget,loop}.ts`.

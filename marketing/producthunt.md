@@ -35,7 +35,7 @@ That's a different product. It's a signal engine, not a CRM.
 
 Trace's data model is intentionally not Contact/Deal/Stage. It's Person → Event → Signal → Timeline. The forbidden-words list is in the repo.
 
-**What ships day one:**
+**What ships day one of MVP (4–6 weeks from this post):**
 - GitHub OAuth + stars, issues, PRs, watchers ingestion
 - Identity dedup across handles (one person, one timeline)
 - Three baseline signals: `high_intent`, `power_user`, `feature_advocate`
