@@ -73,16 +73,7 @@ export default function HomePage() {
       </section>
 
       <footer className="mt-24 border-t border-[color:var(--color-line)] pt-8 font-mono text-xs text-[color:var(--color-mute)]">
-        <p>
-          built by{" "}
-          <a
-            href="https://github.com/moonsu1627"
-            className="underline-offset-4 hover:underline"
-          >
-            moonsu company
-          </a>{" "}
-          · global indie · 2026
-        </p>
+        <p>built by moonsu company · global indie · 2026</p>
       </footer>
     </main>
   );
