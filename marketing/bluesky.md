@@ -37,6 +37,6 @@ Real GitHub ingestion is week 1 of MVP. Mock data until then.
 ## Post 5
 Pre-launch. First 100 builders get the founding plan.
 
-If you've ever opened GitHub Insights, your waitlist CSV, and your Stripe page in the same morning trying to figure out who matters today — trace-web-srye.vercel.app
+If you've ever opened GitHub Insights, your waitlist CSV, and your Stripe page in the same morning trying to figure out who matters today — trace-web-srye.vercel.app/pricing
 
 #buildinpublic

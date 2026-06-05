@@ -9,4 +9,7 @@ dist/
 .DS_Store
 tsconfig.tsbuildinfo
 coverage/
+probes/
 .vercel/
+
+.vercel

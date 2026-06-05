@@ -8,7 +8,7 @@
 ## Pre-flight (15 min)
 
 ```
-✓ landing URL 살아있나? → https://trace-web-srye.vercel.app (검증 완료, GET 200 + POST /api/waitlist {"ok":true})
+✓ landing URL 살아있나? → https://trace-web-srye.vercel.app/pricing (검증 완료, GET 200 + POST /api/waitlist {"ok":true})
 ✓ waitlist 폼 row 적재 확인 — Neon에 production signup 들어감
 ✓ GitHub repo public push — github.com/moonsu1627/trace (commit 186a5ab)
 ✓ 도메인 — trace 변형 13개 다 등록. vercel.app 그대로 발사. 발사 후 PMF 신호 보고 .dev squatter 협상 또는 새 이름 검토.

@@ -270,3 +270,38 @@ model WaitlistEntry {
   @@unique([email])
   @@index([createdAt])
 }
+
+// ---------- Pro Beta Application (사장님 결정 2026-06-01 — 결제 의향 검증) ----------
+// PMF 게이트: waitlist 가입 수 X, 9,900+ 지불 의향 user 10명 ✓.
+// /pricing에서 "Pro 베타 신청" CTA → /apply 폼 → 이 모델에 저장 → /admin/applications에서 확인.
+
+model BetaApplication {
+  id              String   @id @default(cuid())
+  name            String
+  email           String
+  currentTool     String?  // 현재 어떻게 user signal 추적하나
+  biggestPain     String?  // 가장 불편한 점 (서술형)
+  monthlyBudget   BetaBudget
+  referrer        String?  // utm·landing source
+  ipHash          String?
+  createdAt       DateTime @default(now())
+
+  // v203: PayPal Subscriptions 통합 — 사장님 결정 2026-06-01 (Stripe → PayPal 한국 1인 path)
+  paypalSubscriptionId  String?  @unique
+  paypalPayerId         String?
+  paypalStatus          String?  // ACTIVE · APPROVAL_PENDING · APPROVED · SUSPENDED · CANCELLED · EXPIRED
+  paypalPlanId          String?  // 구독한 tier (PLAN_PRO_xxx)
+  paypalSubscribedAt    DateTime?
+
+  @@unique([email])
+  @@index([createdAt])
+  @@index([monthlyBudget])
+  @@index([paypalStatus])
+}
+
+enum BetaBudget {
+  zero       // 0원
+  small      // 4,900원
+  standard   // 9,900원
+  high       // 19,900원+
+}

@@ -8,12 +8,20 @@ export default function HomePage() {
           <span className="text-[color:var(--color-accent)]">●</span>{" "}
           <span className="font-semibold">trace</span>
         </div>
-        <a
-          href="#waitlist"
-          className="font-mono text-xs uppercase tracking-wider text-[color:var(--color-mute)] hover:text-[color:var(--color-ink)]"
-        >
-          waitlist →
-        </a>
+        <nav className="flex items-center gap-5 font-mono text-xs uppercase tracking-wider text-[color:var(--color-mute)]">
+          <a
+            href="/pricing"
+            className="hover:text-[color:var(--color-ink)]"
+          >
+            Pricing
+          </a>
+          <a
+            href="/apply"
+            className="rounded-md bg-[color:var(--color-ink)] px-3 py-1.5 text-[color:var(--color-bg)] transition hover:opacity-90"
+          >
+            Apply for Beta →
+          </a>
+        </nav>
       </header>
 
       <section className="mt-20">

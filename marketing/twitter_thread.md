@@ -72,7 +72,7 @@
 >
 > First 100 builders get the founding plan.
 >
-> 👉 https://trace-web-srye.vercel.app
+> 👉 https://trace-web-srye.vercel.app/pricing
 >
 > RTs appreciated. Replies even more.
 

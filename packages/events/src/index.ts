@@ -14,6 +14,9 @@ export interface TraceEvent {
   key: EventKey;
   source: SourceKey;
   personHandle: string;
+  /** 소스 내 안정 식별자 — GitHub user numeric id 등. handle(login)이 바뀌어도
+   *  불변. identity dedup의 키 — 같은 사람을 한 Person으로 묶는다. */
+  personExternalId: string;
   occurredAt: Date;
   payload: Record<string, unknown>;
   externalId: string;
